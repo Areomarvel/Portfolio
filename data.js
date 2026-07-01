@@ -38,20 +38,24 @@ const portfolioData = {
       demo: "https://areomarvel.github.io/project-level1/"
     },
     {
-      id: "decentraspace",
-      title: "DecentraSpace",
-      category: "web3",
-      tags: ["Next.js", "Web3.js", "Three.js", "Solidity"],
-      summary: "3D virtual storefront builder and gallery on the blockchain.",
-      description: "DecentraSpace enables digital artists and sellers to spin up interactive 3D display environments directly on the web. It interfaces with MetaMask to facilitate peer-to-peer digital item transactions and renders heavy WebGL files seamlessly using optimized asset streaming.",
+      id: "Dramakey-Project",
+      title: "Dramakey Project",
+      category: "Entertainment",
+      tags: ["HTML", "CSS"],
+      summary: "DramaKey Clone is a responsive entertainment website inspired by the DramaKey platform, built to showcase Asian drama content including Korean, Chinese, and Thai series. The project features categorized content browsing, search functionality, dynamic drama listings, episode tracking, and a mobile-friendly user interface designed for seamless content discovery and engagement.",
+      description: "DramaKey Clone is a responsive entertainment website inspired by the DramaKey platform, built to showcase Asian drama content including Korean, Chinese, and Thai series. The project features categorized content browsing, search functionality, dynamic drama listings, episode tracking, and a mobile-friendly user interface designed for seamless content discovery and engagement.",
       features: [
-        "Immersive 3D environments rendered in real-time with Three.js.",
-        "MetaMask and WalletConnect integrations for direct transactions.",
-        "Smart contracts built with Solidity and audited for gas optimization.",
-        "Customizable spatial templates with responsive camera controls."
+        "Browse and discover Asian dramas with detailed information including titles, genres, episode counts, and release years.",
+        "Responsive, mobile-first design that adapts seamlessly to different screen sizes and devices.",
+        "Category filtering system for easy navigation through Korean, Chinese, Thai, and other Asian dramas.",
+        "Search functionality to quickly find specific dramas by title.",
+        "Dynamic content display with real-time updates and interactive elements.",
+        "Clean, modern user interface with smooth animations and intuitive navigation.",
+        "Smooth scrolling and transition effects for a premium user experience.",
+        "Cross-browser compatibility for consistent viewing across different browsers."
       ],
-      github: "https://github.com",
-      demo: "https://github.com"
+      github: "https://github.com/Areomarvel/dramakey-clone",
+      demo: "https://areomarvel.github.io/dramakey-clone/"
     },
     {
       id: "velocss",
