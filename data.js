@@ -22,20 +22,20 @@ const portfolioData = {
 
   projects: [
     {
-      id: "neuro-sync",
-      title: "NeuroSync Planner",
-      category: "web-apps",
-      tags: ["React", "Node.js", "MongoDB", "Socket.io"],
+      id: "Cowry-Wise-Project",
+      title: "CowryWise Project",
+      category: "web3",
+      tags: ["HTML", "CSS", "Javascript"],
       summary: "AI-driven collaborative productivity suite with real-time syncing.",
-      description: "NeuroSync is an advanced task management application designed for agile teams. It integrates a conversational AI assistant that helps breakdown tasks, auto-schedules items based on team velocity, and features real-time collaborative whiteboards and kanban boards.",
+      description: "CowryWise is an advanced task management application designed for agile teams. It integrates a conversational AI assistant that helps breakdown tasks, auto-schedules items based on team velocity, and features real-time collaborative whiteboards and kanban boards.",
       features: [
         "Real-time state synchronization using WebSockets.",
         "Natural Language Processing for auto-generating sub-tasks.",
         "Interactive dashboard with visual performance analytics.",
         "Custom workspace permissions and notification settings."
       ],
-      github: "https://github.com",
-      demo: "https://github.com"
+      github: "https://github.com/Areomarvel/project-level1",
+      demo: "https://areomarvel.github.io/project-level1/"
     },
     {
       id: "decentraspace",
