@@ -74,20 +74,24 @@ const portfolioData = {
       demo: "https://marvellous-calculator.vercel.app/"
     },
     {
-      id: "gitflow-viz",
-      title: "GitFlow Visualizer",
-      category: "developer-tools",
-      tags: ["Vue.js", "D3.js", "Git API", "TailwindCSS"],
-      summary: "Interactive git commit tree and branch visualizer for repositories.",
-      description: "GitFlow Visualizer connects to GitHub repositories via OAuth and transforms commit histories into highly interactive D3.js trees. It helps team leads audit branch mergers, trace cherry-picked commits, and visually map release histories.",
+      id: "Thoughtbot",
+      title: "Thoughtbot Clone",
+      category: "Web Applications",
+      tags: ["HTML", "CSS", "JavaScript"],
+      summary: "Thoughtbot Clone is a responsive web application inspired by the Thoughtbot design. It supports essential features including project browsing, team member profiles, case study details, and modern user interface. The project demonstrates front-end development skills in creating interactive, responsive, and user-friendly web applications using modern web technologies.",
+      description: "Thoughtbot Clone is a responsive corporate website inspired by the design language of Thoughtbot. The project recreates a modern business landing page featuring responsive navigation, service sections, call-to-action components, and a professional user interface. It showcases frontend development skills in building clean, scalable, and mobile-friendly web experiences using modern web technologies.",
       features: [
-        "Custom D3-force rendering for highly complex merge histories.",
-        "Branch filtering and commit searching with search-as-you-type.",
-        "OAuth2 integration for private repository analysis.",
-        "Interactive timeline scroll with animated branch creation nodes."
+        "Responsive navigation with smooth scrolling and active link highlighting.",
+        "Dynamic content display with hover effects and interactive components.",
+        "Clean, modern user interface with smooth animations and intuitive navigation.",
+        "Service showcase with detailed feature descriptions and clear value propositions.",
+        "Professional, corporate layout optimized for business and technology audiences.",
+        "Mobile-first design ensuring seamless experience across all devices.",
+        "Cross-browser compatibility with consistent rendering in modern web browsers.",
+        "Enhanced user engagement through visually appealing layouts and subtle transitions."
       ],
-      github: "https://github.com",
-      demo: "https://github.com"
+      github: "https://github.com/Areomarvel/thoughtbot-",
+      demo: "https://areomarvel.github.io/thoughtbot-/"
     },
     {
       id: "cloudpulse",
