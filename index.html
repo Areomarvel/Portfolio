@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Areo Marvellous - Developer Portfolio</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Google Fonts: Inter & JetBrains Mono for Terminal -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Chart.js for Task Manager (Skills) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="light-theme">
+
+  <!-- ==================== WINDOWS BOOT SCREEN ==================== -->
+  <div id="boot-screen">
+    <div class="boot-logo-container">
+      <!-- Windows-like modern developer logo: sleek glowing square segments -->
+      <div class="boot-logo">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="boot-spinner mt-5">
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SHUTDOWN SCREEN ==================== -->
+  <div id="shutdown-screen" class="hidden">
+    <div class="shutdown-container">
+      <div class="boot-spinner mb-4">
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+      </div>
+      <h3 class="text-white fw-light mb-3">Shutting down...</h3>
+      <button id="btn-restart" class="btn btn-outline-light btn-sm mt-3 hidden">Restart System</button>
+    </div>
+  </div>
+
+  <!-- ==================== DESKTOP SHELL ==================== -->
+  <div id="desktop-shell" class="hidden">
+
+    <!-- Desktop Icons Area -->
+    <div id="desktop-icons">
+      <div class="desktop-shortcut" data-open="explorer">
+        <i class="bi bi-folder-fill shortcut-icon color-folder"></i>
+        <span class="shortcut-label">Portfolio Hub</span>
+      </div>
+      <div class="desktop-shortcut" data-open="settings">
+        <i class="bi bi-gear-fill shortcut-icon color-gear"></i>
+        <span class="shortcut-label">About Me</span>
+      </div>
+      <div class="desktop-shortcut" data-open="taskmanager">
+        <i class="bi bi-cpu-fill shortcut-icon color-cpu"></i>
+        <span class="shortcut-label">My Skills</span>
+      </div>
+      <div class="desktop-shortcut" data-open="mail">
+        <i class="bi bi-envelope-fill shortcut-icon color-mail"></i>
+        <span class="shortcut-label">Contact Me</span>
+      </div>
+      <div class="desktop-shortcut" data-open="terminal">
+        <i class="bi bi-terminal shortcut-icon color-terminal"></i>
+        <span class="shortcut-label">Command Prompt</span>
+      </div>
+    </div>
+
+    <!-- Draggable/Resizable Windows Container -->
+    <div id="windows-container">
+
+      <!-- 1. PORTFOLIO EXPLORER (Projects App) -->
+      <div id="win-explorer" class="win-window closed" data-window="explorer">
+        <div class="win-header">
+          <div class="win-title-area">
+            <i class="bi bi-folder-fill win-app-icon color-folder"></i>
+            <span class="win-title">Portfolio Hub</span>
+          </div>
+          <div class="win-controls">
+            <button class="win-btn win-btn-minimize" title="Minimize"><i class="bi bi-dash-lg"></i></button>
+            <button class="win-btn win-btn-maximize" title="Maximize"><i class="bi bi-square"></i></button>
+            <button class="win-btn win-btn-close" title="Close"><i class="bi bi-x-lg"></i></button>
+          </div>
+        </div>
+        <div class="win-body p-0">
+          <div class="explorer-toolbar d-flex align-items-center gap-2 py-2 px-3">
+            <button class="btn btn-sm btn-action" id="btn-exp-back" disabled><i class="bi bi-arrow-left"></i></button>
+            <button class="btn btn-sm btn-action" id="btn-exp-forward" disabled><i
+                class="bi bi-arrow-right"></i></button>
+            <div class="explorer-address-bar flex-grow-1 d-flex align-items-center gap-2">
+              <i class="bi bi-pc-display"></i>
+              <span>This PC</span>
+              <i class="bi bi-chevron-right separator"></i>
+              <span id="explorer-current-path">Projects</span>
+            </div>
+            <div class="explorer-search-bar">
+              <i class="bi bi-search search-icon"></i>
+              <input type="text" id="explorer-project-search" placeholder="Search projects...">
+            </div>
+          </div>
+          <div class="explorer-main d-flex">
+            <!-- Sidebar Navigation -->
+            <div class="explorer-sidebar px-2 py-3">
+              <div class="sidebar-section">
+                <span class="sidebar-section-title">Quick Access</span>
+                <div class="sidebar-item active" data-filter="all">
+                  <i class="bi bi-grid-fill"></i>
+                  <span>All Projects</span>
+                </div>
+                <div class="sidebar-item" data-filter="web-apps">
+                  <i class="bi bi-globe2"></i>
+                  <span>Web Applications</span>
+                </div>
+                <div class="sidebar-item" data-filter="web3">
+                  <i class="bi bi-currency-bitcoin"></i>
+                  <span>Web3 & Blockchain</span>
+                </div>
+                <div class="sidebar-item" data-filter="developer-tools">
+                  <i class="bi bi-code-square"></i>
+                  <span>Dev Tools</span>
+                </div>
+                <div class="sidebar-item" data-filter="systems">
+                  <i class="bi bi-cpu"></i>
+                  <span>Systems</span>
+                </div>
+              </div>
+            </div>
+            <!-- Main grid display -->
+            <div class="explorer-content flex-grow-1 p-3">
+              <div id="explorer-grid" class="row g-3">
+                <!-- Dynamic folder items rendered here -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Resize Handles -->
+        <div class="resize-handle n"></div>
+        <div class="resize-handle s"></div>
+        <div class="resize-handle e"></div>
+        <div class="resize-handle w"></div>
+        <div class="resize-handle nw"></div>
+        <div class="resize-handle ne"></div>
+        <div class="resize-handle sw"></div>
+        <div class="resize-handle se"></div>
+      </div>
+
+      <!-- 2. ABOUT SETTINGS (About App) -->
+      <div id="win-settings" class="win-window closed" data-window="settings">
+        <div class="win-header">
+          <div class="win-title-area">
+            <i class="bi bi-gear-fill win-app-icon color-gear"></i>
+            <span class="win-title">Settings</span>
+          </div>
+          <div class="win-controls">
+            <button class="win-btn win-btn-minimize" title="Minimize"><i class="bi bi-dash-lg"></i></button>
+            <button class="win-btn win-btn-maximize" title="Maximize"><i class="bi bi-square"></i></button>
+            <button class="win-btn win-btn-close" title="Close"><i class="bi bi-x-lg"></i></button>
+          </div>
+        </div>
+        <div class="win-body p-0 d-flex">
+          <!-- Sidebar Settings Menu -->
+          <div class="settings-sidebar p-3">
+            <div class="d-flex align-items-center gap-3 mb-4 px-2">
+              <img id="settings-avatar" src="" alt="Avatar" class="avatar-img rounded-circle">
+              <div>
+                <h6 class="mb-0 fw-bold" id="settings-user-name">Areo Marvellous</h6>
+                <span class="text-muted small" id="settings-user-role">Full Stack Engineer</span>
+              </div>
+            </div>
+            <div class="settings-menu-list">
+              <div class="settings-menu-item active" data-tab="sys-about">
+                <i class="bi bi-laptop"></i>
+                <span>System (About)</span>
+              </div>
+              <div class="settings-menu-item" data-tab="sys-experience">
+                <i class="bi bi-briefcase"></i>
+                <span>Work Experience</span>
+              </div>
+              <div class="settings-menu-item" data-tab="sys-personalization">
+                <i class="bi bi-palette"></i>
+                <span>Personalization</span>
+              </div>
+              <div class="settings-menu-item" data-tab="sys-update">
+                <i class="bi bi-arrow-clockwise"></i>
+                <span>Windows Update</span>
+              </div>
+            </div>
+          </div>
+          <!-- Main settings details -->
+          <div class="settings-content flex-grow-1 p-4 overflow-y-auto">
+
+            <!-- SYSTEM / ABOUT TAB -->
+            <div id="tab-sys-about" class="settings-tab-pane">
+              <h2 class="mb-4">System Information</h2>
+              <div class="card p-3 mb-4 border-0 bg-glass-card shadow-sm">
+                <h5 class="fw-bold mb-2">Professional Summary</h5>
+                <p id="about-bio" class="text-muted mb-0"></p>
+              </div>
+              <h5 class="fw-bold mb-3">Device Specifications</h5>
+              <table class="table table-borderless table-specs">
+                <tbody>
+                  <tr>
+                    <td>Developer Name</td>
+                    <td id="spec-name"></td>
+                  </tr>
+                  <tr>
+                    <td>Primary Focus</td>
+                    <td id="spec-focus"></td>
+                  </tr>
+                  <tr>
+                    <td>Location</td>
+                    <td id="spec-loc"></td>
+                  </tr>
+                  <tr>
+                    <td>Contact Email</td>
+                    <td><a id="spec-email" href=""></a></td>
+                  </tr>
+                  <tr>
+                    <td>Links</td>
+                    <td>
+                      <div class="d-flex gap-3 mt-1">
+                        <a id="link-github" target="_blank" href="" class="btn btn-sm btn-outline-secondary"><i
+                            class="bi bi-github"></i> GitHub</a>
+                        <a id="link-linkedin" target="_blank" href="" class="btn btn-sm btn-outline-secondary"><i
+                            class="bi bi-linkedin"></i> LinkedIn</a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- EXPERIENCE TAB -->
+            <div id="tab-sys-experience" class="settings-tab-pane d-none">
+              <h2 class="mb-4">Work Experience</h2>
+              <div id="experience-timeline" class="d-flex flex-column gap-3">
+                <!-- Dynamic experiences rendered here -->
+              </div>
+            </div>
+
+            <!-- PERSONALIZATION TAB -->
+            <div id="tab-sys-personalization" class="settings-tab-pane d-none">
+              <h2 class="mb-4">Personalization</h2>
+              <div class="card border-0 p-3 mb-4 bg-glass-card shadow-sm">
+                <h5 class="fw-bold mb-3">Select Desktop Wallpaper</h5>
+                <div class="row g-2" id="wallpaper-gallery">
+                  <!-- Wallpaper option items -->
+                </div>
+              </div>
+              <div class="card border-0 p-3 bg-glass-card shadow-sm">
+                <h5 class="fw-bold mb-3">System Themes</h5>
+                <div class="d-flex gap-3">
+                  <button id="btn-theme-light" class="btn btn-sm btn-outline-primary active">Light Mode</button>
+                  <button id="btn-theme-dark" class="btn btn-sm btn-outline-secondary">Dark Mode</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- UPDATE TAB -->
+            <div id="tab-sys-update" class="settings-tab-pane d-none">
+              <h2 class="mb-4">Windows Update</h2>
+              <div class="d-flex align-items-start gap-4 card border-0 p-4 bg-glass-card shadow-sm">
+                <i class="bi bi-check-circle-fill text-success fs-1"></i>
+                <div class="flex-grow-1">
+                  <h4 class="mb-1" id="update-title">You're up to date</h4>
+                  <p class="text-muted mb-2 small" id="update-details">Last checked: Today at 9:00 AM</p>
+                  <button id="btn-check-updates" class="btn btn-primary btn-sm">Check for updates</button>
+                </div>
+              </div>
+              <div class="card border-0 p-3 mt-4 bg-glass-card shadow-sm">
+                <h6 class="fw-bold mb-2">Update History & Build Info</h6>
+                <p class="text-muted small mb-0" id="build-version"></p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- Resize Handles -->
+        <div class="resize-handle n"></div>
+        <div class="resize-handle s"></div>
+        <div class="resize-handle e"></div>
+        <div class="resize-handle w"></div>
+        <div class="resize-handle nw"></div>
+        <div class="resize-handle ne"></div>
+        <div class="resize-handle sw"></div>
+        <div class="resize-handle se"></div>
+      </div>
+
+      <!-- 3. SKILLS TASK MANAGER (Skills App) -->
+      <div id="win-taskmanager" class="win-window closed" data-window="taskmanager">
+        <div class="win-header">
+          <div class="win-title-area">
+            <i class="bi bi-cpu-fill win-app-icon color-cpu"></i>
+            <span class="win-title">Task Manager</span>
+          </div>
+          <div class="win-controls">
+            <button class="win-btn win-btn-minimize" title="Minimize"><i class="bi bi-dash-lg"></i></button>
+            <button class="win-btn win-btn-maximize" title="Maximize"><i class="bi bi-square"></i></button>
+            <button class="win-btn win-btn-close" title="Close"><i class="bi bi-x-lg"></i></button>
+          </div>
+        </div>
+        <div class="win-body p-0 d-flex flex-column">
+          <!-- Top toolbar/navigation -->
+          <div class="taskmgr-tabs d-flex border-bottom">
+            <button class="taskmgr-tab-btn active" data-task-tab="processes">
+              <i class="bi bi-list-task"></i> Processes
+            </button>
+            <button class="taskmgr-tab-btn" id="btn-tab-perf" data-task-tab="performance">
+              <i class="bi bi-graph-up"></i> Performance
+            </button>
+          </div>
+          <div class="taskmgr-main flex-grow-1 overflow-auto p-3">
+
+            <!-- PROCESSES PANEL -->
+            <div id="taskmgr-processes" class="taskmgr-tab-content">
+              <h6 class="fw-bold mb-3 text-muted">Running Tech Stack & Skills</h6>
+              <div class="table-responsive">
+                <table class="table table-hover table-sm">
+                  <thead>
+                    <tr>
+                      <th style="width: 40%">Process Name</th>
+                      <th style="width: 20%" class="text-end">Status</th>
+                      <th style="width: 20%" class="text-end">Level</th>
+                      <th style="width: 20%" class="text-end">Command</th>
+                    </tr>
+                  </thead>
+                  <tbody id="skills-process-list">
+                    <!-- Dynamic processes table rendered here -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- PERFORMANCE PANEL -->
+            <div id="taskmgr-performance" class="taskmgr-tab-content d-none">
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <!-- Metrics list selection -->
+                  <div class="d-flex flex-column gap-2" id="perf-metrics-selector">
+                    <div class="perf-metric-card active" data-metric="frontend">
+                      <div class="d-flex justify-content-between mb-1">
+                        <span class="fw-bold">Frontend Engine</span>
+                        <span class="value-text text-primary" id="val-frontend">92%</span>
+                      </div>
+                      <div class="progress progress-thin">
+                        <div class="progress-bar bg-primary" id="bar-frontend" style="width: 92%"></div>
+                      </div>
+                    </div>
+                    <div class="perf-metric-card" data-metric="backend">
+                      <div class="d-flex justify-content-between mb-1">
+                        <span class="fw-bold">Backend Core</span>
+                        <span class="value-text text-success" id="val-backend">85%</span>
+                      </div>
+                      <div class="progress progress-thin">
+                        <div class="progress-bar bg-success" id="bar-backend" style="width: 85%"></div>
+                      </div>
+                    </div>
+                    <div class="perf-metric-card" data-metric="devops">
+                      <div class="d-flex justify-content-between mb-1">
+                        <span class="fw-bold">DevOps & Network</span>
+                        <span class="value-text text-warning" id="val-devops">82%</span>
+                      </div>
+                      <div class="progress progress-thin">
+                        <div class="progress-bar bg-warning" id="bar-devops" style="width: 82%"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <!-- Resource monitor canvas -->
+                  <div class="card p-3 border-0 bg-glass-card shadow-sm h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                      <h6 class="fw-bold mb-0" id="perf-chart-title">Frontend Engine - Resource Monitor</h6>
+                      <span class="badge bg-secondary" id="perf-avg-xp">4 Years XP</span>
+                    </div>
+                    <div class="perf-chart-container position-relative flex-grow-1" style="height: 180px;">
+                      <canvas id="performance-chart"></canvas>
+                    </div>
+                    <!-- Stats summary -->
+                    <div class="row mt-3 text-center g-2 border-top pt-2">
+                      <div class="col-4 border-end">
+                        <div class="text-muted small">Efficiency</div>
+                        <div class="fw-bold fs-5 text-primary" id="perf-stat-efficiency">92%</div>
+                      </div>
+                      <div class="col-4 border-end">
+                        <div class="text-muted small">Up-Time</div>
+                        <div class="fw-bold fs-5 text-success">99.9%</div>
+                      </div>
+                      <div class="col-4">
+                        <div class="text-muted small">Core Speed</div>
+                        <div class="fw-bold fs-5 text-warning">Dynamic</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- Resize Handles -->
+        <div class="resize-handle n"></div>
+        <div class="resize-handle s"></div>
+        <div class="resize-handle e"></div>
+        <div class="resize-handle w"></div>
+        <div class="resize-handle nw"></div>
+        <div class="resize-handle ne"></div>
+        <div class="resize-handle sw"></div>
+        <div class="resize-handle se"></div>
+      </div>
+
+      <!-- 4. CONTACT MAIL (Contact App) -->
+      <div id="win-mail" class="win-window closed" data-window="mail">
+        <div class="win-header">
+          <div class="win-title-area">
+            <i class="bi bi-envelope-fill win-app-icon color-mail"></i>
+            <span class="win-title">Mail - Connect</span>
+          </div>
+          <div class="win-controls">
+            <button class="win-btn win-btn-minimize" title="Minimize"><i class="bi bi-dash-lg"></i></button>
+            <button class="win-btn win-btn-maximize" title="Maximize"><i class="bi bi-square"></i></button>
+            <button class="win-btn win-btn-close" title="Close"><i class="bi bi-x-lg"></i></button>
+          </div>
+        </div>
+        <div class="win-body p-0 d-flex">
+          <!-- Sidebar navigation folders -->
+          <div class="mail-sidebar px-2 py-3">
+            <button class="btn btn-primary btn-sm w-100 mb-3" id="btn-mail-new">
+              <i class="bi bi-pencil-square"></i> New Mail
+            </button>
+            <div class="mail-folders d-flex flex-column gap-1">
+              <div class="mail-folder-item active" data-folder="compose">
+                <i class="bi bi-send-fill text-primary"></i>
+                <span>Outbox</span>
+              </div>
+              <div class="mail-folder-item" data-folder="history">
+                <i class="bi bi-check-all text-success"></i>
+                <span>Sent Messages</span>
+                <span class="badge bg-secondary ms-auto" id="mail-sent-count">0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mail main panel -->
+          <div class="mail-content flex-grow-1 p-4 overflow-y-auto">
+
+            <!-- COMPOSE TAB -->
+            <div id="mail-compose-pane" class="mail-pane">
+              <h4 class="mb-3 fw-bold">New Message</h4>
+              <form id="contact-form">
+                <div class="mb-3">
+                  <div class="input-group">
+                    <span class="input-group-text bg-transparent border-end-0 text-muted">To:</span>
+                    <input type="text" class="form-control border-start-0 ps-1" value="areomarvel06@gmail.com" readonly>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <div class="input-group">
+                    <span class="input-group-text bg-transparent border-end-0 text-muted">From:</span>
+                    <input type="email" id="contact-email" class="form-control border-start-0 ps-1"
+                      placeholder="your.email@domain.com" required>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <div class="input-group">
+                    <span class="input-group-text bg-transparent border-end-0 text-muted">Subject:</span>
+                    <input type="text" id="contact-subject" class="form-control border-start-0 ps-1"
+                      placeholder="Let's build something together!" required>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <textarea id="contact-message" class="form-control email-textarea" rows="6"
+                    placeholder="Hi Marvellous, I would love to connect regarding..." required></textarea>
+                </div>
+                <div class="d-flex justify-content-end">
+                  <button type="submit" class="btn btn-primary d-flex align-items-center gap-2">
+                    <i class="bi bi-send"></i> Send Message
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- SENT HISTORY TAB -->
+            <div id="mail-history-pane" class="mail-pane d-none">
+              <h4 class="mb-3 fw-bold">Sent Messages Log</h4>
+              <div id="sent-emails-list" class="d-flex flex-column gap-3">
+                <div class="text-center text-muted py-5" id="no-sent-emails">
+                  <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+                  <span>No sent emails recorded. Use the form to send your message.</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- Resize Handles -->
+        <div class="resize-handle n"></div>
+        <div class="resize-handle s"></div>
+        <div class="resize-handle e"></div>
+        <div class="resize-handle w"></div>
+        <div class="resize-handle nw"></div>
+        <div class="resize-handle ne"></div>
+        <div class="resize-handle sw"></div>
+        <div class="resize-handle se"></div>
+      </div>
+
+      <!-- 5. COMMAND PROMPT (Terminal App) -->
+      <div id="win-terminal" class="win-window closed" data-window="terminal">
+        <div class="win-header">
+          <div class="win-title-area">
+            <i class="bi bi-terminal win-app-icon color-terminal"></i>
+            <span class="win-title">Command Prompt</span>
+          </div>
+          <div class="win-controls">
+            <button class="win-btn win-btn-minimize" title="Minimize"><i class="bi bi-dash-lg"></i></button>
+            <button class="win-btn win-btn-maximize" title="Maximize"><i class="bi bi-square"></i></button>
+            <button class="win-btn win-btn-close" title="Close"><i class="bi bi-x-lg"></i></button>
+          </div>
+        </div>
+        <div class="win-body p-0">
+          <div class="terminal-container p-3 d-flex flex-column h-100">
+            <div class="terminal-output flex-grow-1 overflow-y-auto mb-2" id="term-output">
+              <!-- Initial boot messages -->
+              <div>Microsoft Windows [Version 10.0.22621]</div>
+              <div>(c) Microsoft Corporation. All rights reserved.</div>
+              <br>
+              <div>Type <span class="text-success">help</span> to list available commands.</div>
+              <br>
+            </div>
+            <div class="terminal-input-line d-flex align-items-center">
+              <span class="terminal-prompt me-2">C:\Users\Developer></span>
+              <input type="text" id="term-input" class="flex-grow-1" autofocus autocomplete="off" spellcheck="false">
+            </div>
+          </div>
+        </div>
+        <!-- Resize Handles -->
+        <div class="resize-handle n"></div>
+        <div class="resize-handle s"></div>
+        <div class="resize-handle e"></div>
+        <div class="resize-handle w"></div>
+        <div class="resize-handle nw"></div>
+        <div class="resize-handle ne"></div>
+        <div class="resize-handle sw"></div>
+        <div class="resize-handle se"></div>
+      </div>
+
+    </div>
+
+    <!-- ==================== WINDOWS TASKBAR ==================== -->
+    <div id="taskbar" class="d-flex align-items-center justify-content-between px-3">
+      <!-- Empty space on left to align menu to center -->
+      <div class="taskbar-left d-flex align-items-center">
+        <!-- Optional Widgets Menu -->
+        <button id="taskbar-widgets" class="taskbar-btn" title="Widgets">
+          <i class="bi bi-cloud-sun-fill text-primary"></i>
+          <span class="widgets-temp small">72°F</span>
+        </button>
+      </div>
+
+      <!-- Centered Taskbar Icons -->
+      <div class="taskbar-center d-flex align-items-center gap-1">
+        <!-- Start Button -->
+        <button id="taskbar-start" class="taskbar-btn start-button-color" title="Start">
+          <div class="start-icon">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </button>
+        <!-- Search Button -->
+        <button id="taskbar-search" class="taskbar-btn" title="Search">
+          <i class="bi bi-search"></i>
+        </button>
+
+        <!-- App Shortcut Buttons with state markers -->
+        <div class="taskbar-divider mx-1"></div>
+        <button class="taskbar-btn app-shortcut" data-app="explorer" title="Portfolio Hub">
+          <i class="bi bi-folder-fill color-folder"></i>
+          <div class="active-marker"></div>
+        </button>
+        <button class="taskbar-btn app-shortcut" data-app="settings" title="About Me">
+          <i class="bi bi-gear-fill color-gear"></i>
+          <div class="active-marker"></div>
+        </button>
+        <button class="taskbar-btn app-shortcut" data-app="taskmanager" title="My Skills">
+          <i class="bi bi-cpu-fill color-cpu"></i>
+          <div class="active-marker"></div>
+        </button>
+        <button class="taskbar-btn app-shortcut" data-app="mail" title="Contact Me">
+          <i class="bi bi-envelope-fill color-mail"></i>
+          <div class="active-marker"></div>
+        </button>
+        <button class="taskbar-btn app-shortcut" data-app="terminal" title="Command Prompt">
+          <i class="bi bi-terminal color-terminal"></i>
+          <div class="active-marker"></div>
+        </button>
+      </div>
+
+      <!-- System Tray (Right side) -->
+      <div class="taskbar-right d-flex align-items-center gap-2">
+        <button id="taskbar-quick-settings" class="taskbar-btn px-2 d-flex align-items-center gap-2"
+          title="System Settings">
+          <i class="bi bi-wifi"></i>
+          <i class="bi bi-volume-up"></i>
+          <i class="bi bi-battery-charging"></i>
+        </button>
+        <button id="taskbar-clock-calendar" class="taskbar-btn px-2 d-flex flex-column align-items-end text-end"
+          title="Clock and Date">
+          <span class="clock-time font-monospace" id="tray-time">12:00 PM</span>
+          <span class="clock-date" id="tray-date">7/1/2026</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ==================== WINDOWS START MENU ==================== -->
+    <div id="start-menu" class="win-flyout closed shadow-lg">
+      <div class="p-4 d-flex flex-column h-100">
+        <!-- Search bar inside start menu -->
+        <div class="start-search-container mb-4">
+          <i class="bi bi-search"></i>
+          <input type="text" id="start-search-input" placeholder="Type here to search...">
+        </div>
+
+        <!-- Pinned Apps -->
+        <div class="pinned-section flex-grow-1">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="fw-bold text-muted small">Pinned Apps</span>
+            <button class="btn btn-link btn-sm text-decoration-none text-muted p-0 small">All Apps ></button>
+          </div>
+          <div class="pinned-grid">
+            <div class="pinned-app-item" data-open="explorer">
+              <i class="bi bi-folder-fill color-folder fs-3"></i>
+              <span>Explorer</span>
+            </div>
+            <div class="pinned-app-item" data-open="settings">
+              <i class="bi bi-gear-fill color-gear fs-3"></i>
+              <span>Settings</span>
+            </div>
+            <div class="pinned-app-item" data-open="taskmanager">
+              <i class="bi bi-cpu-fill color-cpu fs-3"></i>
+              <span>Task Mgr</span>
+            </div>
+            <div class="pinned-app-item" data-open="mail">
+              <i class="bi bi-envelope-fill color-mail fs-3"></i>
+              <span>Mail</span>
+            </div>
+            <div class="pinned-app-item" data-open="terminal">
+              <i class="bi bi-terminal color-terminal fs-3"></i>
+              <span>Terminal</span>
+            </div>
+            <div class="pinned-app-item" id="start-web-github">
+              <i class="bi bi-github text-secondary fs-3"></i>
+              <span>GitHub</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recommended / Recent Projects -->
+        <div class="recommended-section mb-4">
+          <span class="fw-bold text-muted small d-block mb-3">Recommended Projects</span>
+          <div id="start-recommended-list" class="d-flex flex-column gap-2">
+            <!-- Dynamic recommended projects rendered here -->
+          </div>
+        </div>
+
+        <!-- User Profile & Power button -->
+        <div class="start-footer d-flex align-items-center justify-content-between pt-3 border-top mt-auto">
+          <div class="d-flex align-items-center gap-2">
+            <img id="start-avatar" src="" alt="User" class="start-avatar-img rounded-circle">
+            <span class="fw-bold small" id="start-user-name">Areo Marvellous</span>
+          </div>
+          <button id="btn-start-power" class="btn btn-link p-0 text-muted" title="Power Options">
+            <i class="bi bi-power fs-5"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== WINDOWS SEARCH PANEL ==================== -->
+    <div id="search-panel" class="win-flyout closed shadow-lg">
+      <div class="p-4 h-100 d-flex flex-column">
+        <h5 class="fw-bold mb-3">Search</h5>
+        <div class="start-search-container mb-4">
+          <i class="bi bi-search"></i>
+          <input type="text" id="panel-search-input" placeholder="Search projects, skills, or system settings...">
+        </div>
+        <div class="search-results-section flex-grow-1 overflow-y-auto">
+          <span class="fw-bold text-muted small d-block mb-2">Best Match</span>
+          <div id="search-best-match" class="mb-3">
+            <!-- Render dynamic best match cards -->
+          </div>
+          <span class="fw-bold text-muted small d-block mb-2">Related Items</span>
+          <div id="search-related-items" class="d-flex flex-column gap-2">
+            <!-- Render related items -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== WIDGETS PANEL ==================== -->
+    <div id="widgets-panel" class="win-flyout closed shadow-lg">
+      <div class="p-4 h-100 overflow-y-auto">
+        <h5 class="fw-bold mb-3 d-flex align-items-center gap-2">
+          <i class="bi bi-layout-wtf text-primary"></i> Widgets
+        </h5>
+        <!-- Weather widget -->
+        <div class="card border-0 p-3 mb-3 bg-glass-card shadow-sm text-white bg-gradient-weather">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h6 class="mb-1">San Francisco</h6>
+              <h2 class="mb-0 fw-bold">72°F</h2>
+            </div>
+            <i class="bi bi-cloud-sun fs-1"></i>
+          </div>
+          <div class="mt-3 small">Partly Cloudy • Humidity 60% • Wind 8mph</div>
+        </div>
+        <!-- News widget -->
+        <div class="card border-0 p-3 mb-3 bg-glass-card shadow-sm">
+          <h6 class="fw-bold text-muted small mb-2">DEVELOPER NEWS</h6>
+          <div class="d-flex flex-column gap-2">
+            <a href="#" class="news-link">
+              <span class="fw-bold d-block">Windows 11 Portfolio is Live!</span>
+              <span class="text-muted small">Explore this beautiful interface and check the developer's work.</span>
+            </a>
+            <hr class="my-1">
+            <a href="#" class="news-link">
+              <span class="fw-bold d-block">AI Agents Revolutionize Development</span>
+              <span class="text-muted small">Anthropic and DeepMind introduce agent models for coding tasks.</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== QUICK SETTINGS PANEL ==================== -->
+    <div id="quick-settings-panel" class="win-flyout closed shadow-lg">
+      <div class="p-3">
+        <!-- Grid settings buttons -->
+        <div class="row g-2 mb-3">
+          <div class="col-4">
+            <button id="toggle-wifi" class="qs-btn active">
+              <i class="bi bi-wifi"></i>
+              <span>Wi-Fi</span>
+            </button>
+          </div>
+          <div class="col-4">
+            <button id="toggle-bluetooth" class="qs-btn active">
+              <i class="bi bi-bluetooth"></i>
+              <span>Bluetooth</span>
+            </button>
+          </div>
+          <div class="col-4">
+            <button id="toggle-dark-mode" class="qs-btn">
+              <i class="bi bi-moon"></i>
+              <span>Dark Mode</span>
+            </button>
+          </div>
+          <div class="col-4">
+            <button id="toggle-sound-mute" class="qs-btn active">
+              <i class="bi bi-volume-up"></i>
+              <span>Sound</span>
+            </button>
+          </div>
+          <div class="col-4">
+            <button id="btn-qs-settings" class="qs-btn">
+              <i class="bi bi-gear"></i>
+              <span>Settings</span>
+            </button>
+          </div>
+          <div class="col-4">
+            <button id="btn-qs-terminal" class="qs-btn">
+              <i class="bi bi-terminal"></i>
+              <span>Terminal</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Sound slider -->
+        <div class="d-flex align-items-center gap-2 mb-3 px-1">
+          <i class="bi bi-volume-up" id="sound-icon"></i>
+          <input type="range" class="form-range flex-grow-1" id="sound-slider" min="0" max="100" value="80">
+          <span class="small font-monospace" id="sound-val">80</span>
+        </div>
+
+        <!-- Wallpaper mini selection -->
+        <div class="border-top pt-2">
+          <span class="fw-bold text-muted small d-block mb-2">Wallpaper Quick Select</span>
+          <div class="d-flex gap-2" id="quick-wallpaper-list">
+            <!-- Mini wallpaper thumbnail circles -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== CALENDAR PANEL ==================== -->
+    <div id="calendar-panel" class="win-flyout closed shadow-lg">
+      <div class="p-3">
+        <!-- Custom Calendar Widget -->
+        <div class="calendar-widget text-center">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="fw-bold mb-0" id="calendar-month-year">July 2026</h6>
+            <div class="d-flex gap-2">
+              <button class="btn btn-sm btn-action" id="btn-cal-prev"><i class="bi bi-chevron-up"></i></button>
+              <button class="btn btn-sm btn-action" id="btn-cal-next"><i class="bi bi-chevron-down"></i></button>
+            </div>
+          </div>
+          <div class="calendar-grid">
+            <div class="day-name">Su</div>
+            <div class="day-name">Mo</div>
+            <div class="day-name">Tu</div>
+            <div class="day-name">We</div>
+            <div class="day-name">Th</div>
+            <div class="day-name">Fr</div>
+            <div class="day-name">Sa</div>
+            <!-- Days list -->
+            <div id="calendar-days" class="calendar-days-container"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TOAST NOTIFICATIONS SYSTEM ==================== -->
+    <div id="toast-container" class="position-absolute bottom-0 end-0 p-3">
+      <!-- Dynamic toasts appear here -->
+    </div>
+
+  </div>
+
+  <!-- Centralized Data Source -->
+  <script src="data.js"></script>
+  <!-- Interactive logic layer -->
+  <script src="app.js"></script>
+</body>
+
+</html>
