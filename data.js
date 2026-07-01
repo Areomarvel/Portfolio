@@ -58,20 +58,20 @@ const portfolioData = {
       demo: "https://areomarvel.github.io/dramakey-clone/"
     },
     {
-      id: "velocss",
-      title: "VeloCSS Compiler",
-      category: "developer-tools",
-      tags: ["Rust", "WASM", "JavaScript", "CSS"],
-      summary: "High-speed utility CSS compiler compiled to WebAssembly.",
-      description: "VeloCSS is a light-speed CSS compilation engine written in Rust. By compiling to WebAssembly, it parses large HTML and JS files in the browser and outputs minimal utility-based CSS in milliseconds, acting as a lightweight, client-side Tailwind clone.",
+      id: "Calculator",
+      title: " Calculator",
+      category: "Developer Tools",
+      tags: ["HTML", "CSS", "JavaScript"  ],
+      summary: "Marvellous Calculator is a responsive web calculator inspired by the iPhone Calculator design. It supports essential arithmetic operations, percentage calculations, decimal inputs, and positive/negative value toggling through a clean and intuitive user interface. The project demonstrates front-end development skills in creating interactive, responsive, and user-friendly web applications using modern web technologies.",
+      description: "Marvellous Calculator is a responsive web calculator inspired by the iPhone Calculator design. It supports essential arithmetic operations, percentage calculations, decimal inputs, and positive/negative value toggling through a clean and intuitive user interface. The project demonstrates front-end development skills in creating interactive, responsive, and user-friendly web applications using modern web technologies.",
       features: [
-        "Compiles over 100,000 lines of CSS in under 12ms via Rust WASM.",
-        "Zero-config engine requiring only a script tag to initialize.",
-        "On-the-fly style sheet injection using MutationObservers.",
-        "Extremely tiny bundle size with zero external dependencies."
+        " Support for basic arithmetic operations including addition, subtraction, multiplication, and division.",
+        "Toggle functionality to switch between positive and negative values.",
+        "Responsive, mobile-first design that adapts seamlessly to different screen sizes and devices.",
+        "Clean, modern user interface with smooth animations and intuitive navigation."
       ],
-      github: "https://github.com",
-      demo: "https://github.com"
+      github: "https://github.com/Areomarvel/Calculator",
+      demo: "https://marvellous-calculator.vercel.app/"
     },
     {
       id: "gitflow-viz",
