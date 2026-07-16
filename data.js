@@ -94,20 +94,20 @@ const portfolioData = {
       demo: "https://areomarvel.github.io/thoughtbot-/"
     },
     {
-      id: "cloudpulse",
-      title: "CloudPulse Monitor",
-      category: "systems",
-      tags: ["Go", "React", "gRPC", "Docker", "Prometheus"],
-      summary: "Real-time microservices monitor dashboard with automated alerts.",
-      description: "CloudPulse tracks host metrics, database queries, and gRPC traffic for distributed Docker services. It features a dashboard that displays memory leaks, network traffic congestions, and sends immediate webhook warnings on container crashes.",
+      id: "Music-API",
+      title: "Music API",
+      category: "APIs",
+      tags: ["Node.js", "Express", "MongoDB"],
+      summary: "A RESTful API for managing and retrieving music data.",
+      description: "The Music API provides endpoints for creating, reading, updating, and deleting music records. It includes features for searching and filtering music based on various criteria.",
       features: [
         "Lightweight Go daemon monitoring metrics with ultra-low overhead.",
         "Responsive canvas-based charts displaying active container CPU and RAM.",
         "Custom rule engine to trigger Discord and Slack webhooks.",
         "Docker daemon API connection mapping service topologies dynamically."
       ],
-      github: "https://github.com",
-      demo: "https://github.com"
+      github: "https://github.com/Areomarvel/Assignment--musicAPI-",
+      demo: "https://assignment-musicapi.onrender.com/musicians"
     }
   ],
 
