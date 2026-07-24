@@ -108,6 +108,26 @@ const portfolioData = {
       ],
       github: "https://github.com/Areomarvel/Assignment--musicAPI-",
       demo: "https://assignment-musicapi.onrender.com/musicians"
+    },
+    {
+      id: "MTN-Page",
+      title: "MTN Page",
+      category: "Web Applications",
+      tags: ["HTML", "CSS", "JavaScript"],
+      summary: "A responsive web application inspired by the MTN design.",
+      description: "MTN Page is a responsive corporate telecommunications website inspired by the MTN Group website. It features modern hero sections, company information, leadership content, achievements, news, investor information, podcasts, sustainability content, and a structured corporate footer, all presented through MTN's bold yellow-and-black visual identity.",
+      features: [
+        "Responsive navigation with smooth scrolling and active link highlighting.",
+        "Dynamic content display with hover effects and interactive components.",
+        "Clean, modern user interface with smooth animations and intuitive navigation.",
+        "Service showcase with detailed feature descriptions and clear value propositions.",
+        "Professional, corporate layout optimized for business and technology audiences.",
+        "Mobile-first design ensuring seamless experience across all devices.",
+        "Cross-browser compatibility with consistent rendering in modern web browsers.",
+        "Enhanced user engagement through visually appealing layouts and subtle transitions."
+      ],
+      github: "https://github.com/Areomarvel/MTN-Page",
+      demo: "https://mtn-page.vercel.app/"
     }
   ],
 
