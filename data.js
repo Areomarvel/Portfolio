@@ -130,12 +130,12 @@ const portfolioData = {
       demo: "https://mtn-page.vercel.app/"
     },
     {
-      id: "Asian-Drama-List",
-      title: "Asian Drama List",
+      id: "Drama-Info",
+      title: "Drama Info",
       category: "Web Applications",
       tags: ["HTML", "CSS", "JavaScript"],
       summary: "A lightweight, web-based catalog and tracking application tailored for Asian drama enthusiasts. It acts as a digital hub where users can explore an extensive library of TV shows and movies, look up detailed information regarding casts and episodes, and manage their personal viewing habits.",
-      description: "Asian Drama List Hosted on Vercel, the platform serves as a clean, user-friendly frontend interface (often built using modern web frameworks like React/Next.js) that pulls information or acts as a tracker for Asian cinema and television. It bridges the gap between casual viewers and dedicated fandoms by providing an organized space to search through thousands of titles, check synopsis details, view recommendations, and keep tabs on what to watch next without clutter.",
+      description: "Drama Info Hosted on Vercel, the platform serves as a clean, user-friendly frontend interface (often built using modern web frameworks like React/Next.js) that pulls information or acts as a tracker for Asian cinema and television. It bridges the gap between casual viewers and dedicated fandoms by providing an organized space to search through thousands of titles, check synopsis details, view recommendations, and keep tabs on what to watch next without clutter.",
       features: [
         " Comprehensive Database: Access detailed listings of dramas and movies from various Asian countries (South Korea, China, Japan, Thailand, Taiwan, etc.).",
         "Show Details & Synopses: View essential information for each title, including release dates, genres, episode counts, networks/streaming platforms, and brief plot summaries.",
@@ -148,7 +148,7 @@ const portfolioData = {
         "Recommendations: Discover similar shows and tailored recommendations based on specific drama titles or genres."
       ],
       github: "https://github.com/Areomarvel/Dramalist",
-      demo: "https://asiandramalist.vercel.app/"
+      demo: "https://dramainfo.vercel.app/"
     }
   ],
 
